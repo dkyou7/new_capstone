@@ -1,33 +1,38 @@
-<div class="container">
+<% if user_signed_in? %>
+  <p>현재 로그인된 유저의 이메일 : <%= current_user.email %></p>
+  <p><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <div class="container">
     <h1>Posts</h1>
-</div>
-<div class="container">
-<table class="table">
-  <thead>
-    <tr>
-      <th class="col">번호</th>
-      <th class="col">제목</th>
-      <th class="col">내용</th>
-      <th class="col">해싱값</th>
-      <th class="col">비고</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @post.each do |post|%>
-    <tr>
-        <td><%= post.id %></td>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.hashstring%></td>
-        <td>
-            <a href="/destroy/<%= post.id %>">삭제</a>
-            <a href="/edit/<%= post.id %>">수정</a>        
-        </td>
-    </tr>
-    <%end%>
-  </tbody>
-</table>
-    <a href="/new">새글 쓰기</a>
-
-</div>
+        </div>
+        <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col">번호</th>
+              <th class="col">제목</th>
+              <th class="col">해싱값</th>
+              <th class="col">비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @post.each do |post|%>
+            <tr>
+                <td><%= post.id %></td>
+                <td><%= post.title %></td>
+                <td><%= post.hashstring%></td>
+                <td>
+                    <button type="button" class="btn btn-outline-success"onClick="location.href='/show/<%= post.id %>'">보기</button>
+                    <button type="button" class="btn btn-outline-warning"onClick="location.href='/edit/<%= post.id %>'">수정</button>
+                    <button type="button" class="btn btn-outline-danger"onClick="location.href='/destroy/<%= post.id %>'">삭제</button>
+                    
+                </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-outline-primary" onClick="location.href='/new'">새글쓰기</button>
+    </div>
+<% else %>
+  <p><%= link_to "로그인", new_user_session_path %></p>
+<% end %>
 

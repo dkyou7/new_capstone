@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'devise'
+
+gem 'devise-bootstrap-views'
 
 gem 'rails_db'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

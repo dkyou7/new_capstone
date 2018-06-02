@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   root 'home#index'
   
   get '/index'=>'home#index'
 
   get '/new'=>'home#new'
+  
+  get '/show/:id'=>'home#show'
 
   post '/create'=>'home#create'
   

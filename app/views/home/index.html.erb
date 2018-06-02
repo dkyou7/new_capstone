@@ -1,6 +1,4 @@
 <% if user_signed_in? %>
-  <p>현재 로그인된 유저의 이메일 : <%= current_user.email %></p>
-  <p><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
   <div class="container">
     <h1>Posts</h1>
         </div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Posts</h1>
+</div>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col">번호</th>
+      <th class="col">제목</th>
+      <th class="col">내용</th>
+      <th class="col">해싱값</th>
+      <th class="col">비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @post.each do |post|%>
+    <tr>
+        <td><%= post.id %></td>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= post.hashstring%></td>
+        <td>
+            <a href="/destroy/<%= post.id %>">삭제</a>
+            <a href="/edit/<%= post.id %>">수정</a>        
+        </td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+    <a href="/new">새글 쓰기</a>
+
+</div>
+
